@@ -257,27 +257,27 @@ npm run preview
 
 ### Home Page
 
-![Home Page](screenshots/home.png)
+![Home Page](screenshot/home.png)
 
 ### Products Page
 
-![Products Page](screenshots/products.png)
+![Products Page](screenshot/products.png)
 
 ### Product Details
 
-![Product Details](screenshots/product-details.png)
+![Product Details](screenshot/product-details.png)
 
 ### Shopping Cart
 
-![Cart](screenshots/cart.png)
+![Cart](screenshot/cart.png)
 
 ### Checkout
 
-![Checkout](screenshots/checkout.png)
+![Checkout](screenshot/checkout.png)
 
 ### Orders
 
-![Orders](screenshots/orders.png)
+![Orders](screenshot/orders.png)
 
 
 ---
