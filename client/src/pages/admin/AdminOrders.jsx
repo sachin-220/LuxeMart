@@ -15,7 +15,7 @@ const AdminOrders = () => {
 
     const fetchOrders = async () => {
         try {
-            const res = await fetch('/api/admin/orders', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/orders`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -32,7 +32,7 @@ const AdminOrders = () => {
     const handleUpdateShipment = async (orderId, newStage) => {
         setUpdatingId(orderId);
         try {
-            const res = await fetch(`/api/admin/orders/${orderId}/shipment`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/orders/${orderId}/shipment`, {
                 method: 'PUT',
                 headers: { 
                     'Content-Type': 'application/json',

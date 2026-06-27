@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
                 return;
             }
             try {
-                const res = await fetch('http://localhost:5000/api/auth/me', {
+                const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
     }, [token]);
 
     const login = async (email, password) => {
-        const res = await fetch('http://localhost:5000/api/auth/login', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const signup = async (name, email, password) => {
-        const res = await fetch('http://localhost:5000/api/auth/register', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password })
@@ -105,7 +105,7 @@ export const AuthProvider = ({ children }) => {
 
     const updateProfile = async (updates) => {
         try {
-            const res = await fetch('http://localhost:5000/api/auth/profile', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await fetch('http://localhost:5000/api/auth/logout');
+            await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`);
         } catch (e) { console.error(e); }
         localStorage.removeItem('token');
         setToken(null);

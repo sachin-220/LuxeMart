@@ -37,7 +37,7 @@ const ProductDetails = () => {
             setProduct(data.product);
             
             // Fetch related products
-            const relatedRes = await fetch(`http://localhost:5000/api/products/${id}/related`);
+            const relatedRes = await fetch(`${import.meta.env.VITE_API_URL}/products/${id}/related`);
             const relatedData = await relatedRes.json();
             if (relatedData.success) {
                 setRelatedProducts(relatedData.products);

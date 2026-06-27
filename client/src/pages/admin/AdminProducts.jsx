@@ -21,7 +21,7 @@ const AdminProducts = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await fetch('/api/products?limit=50');
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/products?limit=50`);
             const data = await res.json();
             if (data.products) setProducts(data.products);
         } catch (err) {
@@ -40,7 +40,7 @@ const AdminProducts = () => {
 
         setUploadingImage(true);
         try {
-            const res = await fetch('/api/upload', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
                 method: 'POST',
                 headers: { Authorization: `Bearer ${token}` },
                 body: formDataImg
@@ -63,7 +63,9 @@ const AdminProducts = () => {
         e.preventDefault();
         
         const isEditing = !!formData._id;
-        const url = isEditing ? `/api/admin/products/${formData._id}` : '/api/admin/products';
+        const url = isEditing 
+            ? `${import.meta.env.VITE_API_URL}/admin/products/${formData._id}` 
+            : `${import.meta.env.VITE_API_URL}/admin/products`;
         const method = isEditing ? 'PUT' : 'POST';
 
         try {
@@ -94,7 +96,7 @@ const AdminProducts = () => {
         if (!window.confirm('Are you sure you want to delete this product?')) return;
         
         try {
-            const res = await fetch(`/api/admin/products/${id}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/products/${id}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}` }
             });

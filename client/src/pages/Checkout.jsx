@@ -194,7 +194,7 @@ const hasOutOfStock = cart.some(item => item.stock <= 0);
                 product: item._id
             }));
 
-            const res = await fetch('http://localhost:5000/api/orders', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/orders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -226,7 +226,7 @@ const hasOutOfStock = cart.some(item => item.stock <= 0);
             // Direct checkout bypass for mock orders (demo/development) or Cash on Delivery (COD)
             // Direct checkout bypass for mock orders (demo/development) or Cash on Delivery (COD)
             if ((razorpayOrder && razorpayOrder.id && razorpayOrder.id.startsWith('order_mock_')) || paymentMethod === 'cod') {
-                const verifyRes = await fetch(`http://localhost:5000/api/orders/${order._id}/pay`, {
+                const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/orders/${order._id}/pay`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -270,7 +270,7 @@ const hasOutOfStock = cart.some(item => item.stock <= 0);
                 order_id: razorpayOrder.id,
                 handler: async function (response) {
                     try {
-                        const verifyRes = await fetch(`http://localhost:5000/api/orders/${order._id}/pay`, {
+                        const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/orders/${order._id}/pay`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

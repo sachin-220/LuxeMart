@@ -118,7 +118,7 @@ const Orders = () => {
         const toastId = toast.loading("Processing order cancellation...");
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/orders/${cancelModal.orderId}/cancel`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/orders/${cancelModal.orderId}/cancel`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
