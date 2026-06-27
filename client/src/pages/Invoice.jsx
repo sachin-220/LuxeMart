@@ -251,9 +251,9 @@ const Invoice = () => {
                         <tbody>
                             {(order?.orderItems || []).map((item, idx) => (
                                 <tr key={idx} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                                    <td style={{ padding: '1.25rem 1rem' }}>
-                                        <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '0.9rem' }}>{item.name}</div>
-                                        <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.25rem' }}>
+                                    <td className="invoice-item-cell" style={{ padding: '1.25rem 1rem' }}>
+                                        <div className="invoice-item-name" style={{ fontWeight: '700', color: '#0f172a', fontSize: '0.9rem' }}>{item.name}</div>
+                                        <div className="invoice-item-seller" style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.25rem' }}>
                                             Seller: LuxeMart Retail | HSN: {4800 + idx}
                                         </div>
                                     </td>

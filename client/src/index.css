@@ -1010,5 +1010,91 @@ h1, h2, h3, h4, h5, h6 {
   .membership-payment-grid {
     grid-template-columns: 1fr !important;
   }
+
+  /* Orders Page Mobile Review & Feedback Modals */
+  .review-modal-panel, .feedback-modal-panel {
+    padding: 1.5rem 1.25rem !important;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 95% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .review-product-info {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem !important;
+  }
+
+  .review-product-info img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .review-rating-stars, .feedback-rating-stars {
+    gap: 0.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .review-rating-stars svg, .feedback-rating-stars svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .review-input, .review-textarea, .feedback-textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 0.9rem !important;
+  }
+
+  .review-modal-actions, .feedback-modal-actions {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .review-modal-actions button, .feedback-modal-actions button {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  /* Invoice page Mobile Enhancements */
+  .invoice-document {
+    padding: 1.5rem 1rem !important;
+    overflow-x: auto;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .invoice-document table {
+    display: table !important;
+    min-width: 580px !important;
+    width: 100% !important;
+  }
+
+  .invoice-item-name {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .invoice-item-seller {
+    margin-top: 0.5rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .invoice-document table th, .invoice-document table td {
+    padding: 0.75rem 0.6rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Touch target safety for interactive elements on mobile */
+  .btn, .input, .profile-menu-item, .mobile-sticky-action-bar button, .search-bar-wrapper input {
+    min-height: 44px !important;
+  }
 }
 

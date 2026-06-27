@@ -581,21 +581,21 @@ const Orders = () => {
         if (!feedbackModal.open) return null;
         return (
             <div className="modal-overlay fade-in" style={{ position: 'fixed', inset: 0, top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }} onClick={() => setFeedbackModal({ open: false, orderId: null, seller: '', rating: 0, comment: '' })}>
-                <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2.5rem', background: 'var(--bg-body)' }} onClick={e => e.stopPropagation()}>
+                <div className="glass-panel feedback-modal-panel" style={{ width: '100%', maxWidth: '500px', padding: '2.5rem', background: 'var(--bg-body)' }} onClick={e => e.stopPropagation()}>
                     <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem' }}>Leave Seller Feedback</h2>
                     <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>Rate your experience with <strong>{feedbackModal.seller}</strong> for Order #{feedbackModal.orderId}</p>
                     
-                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', justifyContent: 'center' }}>
+                    <div className="feedback-rating-stars" style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', justifyContent: 'center' }}>
                         {[1, 2, 3, 4, 5].map(star => (
                             <Star key={star} size={32} style={{ cursor: 'pointer', fill: star <= feedbackModal.rating ? 'var(--warning)' : 'none', color: star <= feedbackModal.rating ? 'var(--warning)' : 'var(--border-color)' }} onClick={() => setFeedbackModal({ ...feedbackModal, rating: star })} />
                         ))}
                     </div>
 
-                    <textarea className="input" placeholder="What did you like or dislike?" rows="4" value={feedbackModal.comment} onChange={(e) => setFeedbackModal({...feedbackModal, comment: e.target.value})} style={{ marginBottom: '1.5rem', resize: 'none' }}></textarea>
+                    <textarea className="input feedback-textarea" placeholder="What did you like or dislike?" rows="4" value={feedbackModal.comment} onChange={(e) => setFeedbackModal({...feedbackModal, comment: e.target.value})} style={{ marginBottom: '1.5rem', resize: 'none' }}></textarea>
 
-                    <div className="flex gap-4">
-                        <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => setFeedbackModal({ open: false, orderId: null, seller: '', rating: 0, comment: '' })}>Cancel</button>
-                        <button className="btn btn-primary" style={{ flex: 1 }} onClick={submitFeedback}>Submit Feedback</button>
+                    <div className="flex gap-4 feedback-modal-actions">
+                        <button className="btn btn-outline feedback-btn-cancel" style={{ flex: 1 }} onClick={() => setFeedbackModal({ open: false, orderId: null, seller: '', rating: 0, comment: '' })}>Cancel</button>
+                        <button className="btn btn-primary feedback-btn-submit" style={{ flex: 1 }} onClick={submitFeedback}>Submit Feedback</button>
                     </div>
                 </div>
             </div>
@@ -606,26 +606,26 @@ const Orders = () => {
         if (!reviewModal.open) return null;
         return (
             <div className="modal-overlay fade-in" style={{ position: 'fixed', inset: 0, top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }} onClick={() => setReviewModal({ open: false, item: null, rating: 0, title: '', comment: '' })}>
-                <div className="glass-panel" style={{ width: '100%', maxWidth: '600px', padding: '2.5rem', background: 'var(--bg-body)' }} onClick={e => e.stopPropagation()}>
+                <div className="glass-panel review-modal-panel" style={{ width: '100%', maxWidth: '600px', padding: '2.5rem', background: 'var(--bg-body)' }} onClick={e => e.stopPropagation()}>
                     <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>Write a Product Review</h2>
                     
-                    <div className="flex gap-4 items-center" style={{ marginBottom: '2rem', background: 'var(--bg-subtle)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
+                    <div className="flex gap-4 items-center review-product-info" style={{ marginBottom: '2rem', background: 'var(--bg-subtle)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
                         <img src={reviewModal.item.image} alt={reviewModal.item.name} loading="lazy" decoding="async" style={{ width: '50px', height: '50px', objectFit: 'contain' }} />
                         <div style={{ fontWeight: '500', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{reviewModal.item.name}</div>
                     </div>
                     
-                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                    <div className="review-rating-stars" style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
                         {[1, 2, 3, 4, 5].map(star => (
                             <Star key={star} size={28} style={{ cursor: 'pointer', fill: star <= reviewModal.rating ? 'var(--warning)' : 'none', color: star <= reviewModal.rating ? 'var(--warning)' : 'var(--border-color)' }} onClick={() => setReviewModal({ ...reviewModal, rating: star })} />
                         ))}
                     </div>
 
-                    <input type="text" className="input" placeholder="Add a headline" value={reviewModal.title} onChange={(e) => setReviewModal({...reviewModal, title: e.target.value})} style={{ marginBottom: '1rem' }} />
-                    <textarea className="input" placeholder="Add a written review" rows="5" value={reviewModal.comment} onChange={(e) => setReviewModal({...reviewModal, comment: e.target.value})} style={{ marginBottom: '1.5rem', resize: 'vertical' }}></textarea>
+                    <input type="text" className="input review-input" placeholder="Add a headline" value={reviewModal.title} onChange={(e) => setReviewModal({...reviewModal, title: e.target.value})} style={{ marginBottom: '1rem' }} />
+                    <textarea className="input review-textarea" placeholder="Add a written review" rows="5" value={reviewModal.comment} onChange={(e) => setReviewModal({...reviewModal, comment: e.target.value})} style={{ marginBottom: '1.5rem', resize: 'vertical' }}></textarea>
 
-                    <div className="flex gap-4">
-                        <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => setReviewModal({ open: false, item: null, rating: 0, title: '', comment: '' })}>Cancel</button>
-                        <button className="btn btn-primary" style={{ flex: 1 }} onClick={submitReview}>Submit Review</button>
+                    <div className="flex gap-4 review-modal-actions">
+                        <button className="btn btn-outline review-btn-cancel" style={{ flex: 1 }} onClick={() => setReviewModal({ open: false, item: null, rating: 0, title: '', comment: '' })}>Cancel</button>
+                        <button className="btn btn-primary review-btn-submit" style={{ flex: 1 }} onClick={submitReview}>Submit Review</button>
                     </div>
                 </div>
             </div>
